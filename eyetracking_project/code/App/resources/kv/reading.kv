@@ -1,0 +1,42 @@
+#:kivy 2.3.0
+<ReadingScreen>:
+    pdf: pdf_view
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 1
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 1
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 0.8, 1
+                CustomLabel:
+                    text: 'PDF view'
+                    font_size: 20
+                    size_hint: 1, 0.1
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    size_hint: 1, 0.9
+                    PdfPageView:
+                        id: pdf_view
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 0.2, 1
+                background_color: 0, 1, 0, .5
+                ButtonLayout:
+                    orientation: 'vertical'
+                    CustomToggle:
+                        id: gaze_recording_toggle
+                        text: 'Start Recording'
+                        on_press: root.gaze_recording()
+                    CustomToggle:
+                        id: gaze_view_toggle
+                        text: 'Toggle Gaze'
+                        state: 'down'
+                        on_press: if self.state == 'normal': root.clear_gaze_points()
+                    CustomButton:
+                        text: 'Main Menu'
+                        on_press: app.root.current = 'main_menu'

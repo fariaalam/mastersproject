@@ -1,0 +1,39 @@
+#:kivy 2.3.0
+<PdfPage>
+    size_hint: 1, 1
+    anchor_x: 'center'
+    anchor_y: 'center'
+    image: image
+    Image:
+        size_hint: None, None
+        id: image
+        source: root.source
+        size: self.texture_size
+
+<PdfPageView>
+    pdf_page_container: pdf_page_container
+    orientation: 'vertical'
+    size_hint: 1, 1
+    BoxLayout:
+        id: pdf_page_container
+    ButtonLayout:
+        CustomButton:
+            text: 'Previous'
+            on_press: root.show_prev_page()
+        CustomButton:
+            text: 'Next'
+            on_press: root.show_next_page()
+
+<PdfScrollView>
+    pdf_scroll_view: pdf_scroll_view
+    pdf_page_container: pdf_page_container
+    size_hint: 1, 1
+    ScrollView:
+        id: pdf_scroll_view
+        BoxLayout:
+            id: pdf_page_container
+            orientation: 'vertical'
+            padding: 0
+            spacing: 5
+            size_hint_y: 10
+            size_hint_x: 1

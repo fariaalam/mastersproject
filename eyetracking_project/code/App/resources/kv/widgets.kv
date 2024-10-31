@@ -1,0 +1,89 @@
+#:kivy 2.3.0
+<Label>:
+
+
+<CustomLabel@Label>:
+    markup: True
+    font_size: 20
+    size_hint: None, None
+    size: 200, 50  # Set an explicit size
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center the button
+    text: 'Label'
+    color: (0, 0, 0, 1)
+    background_color: (1, 1, 1, 1)
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<CustomButton>:
+    markup: True
+    font_size: 20
+    size_hint: None, None
+    size: 200, 50  # Set an explicit size
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center the button
+    background_normal: ''
+    background_color: 1, 1, 1, .1
+    canvas.before:
+        Color:
+            rgba: .56, .56, .56, 1
+        Line:
+            width: 1.5
+            rectangle: self.x, self.y, self.width, self.height
+    text: 'Button'
+    color: 0, 0, 0, 1
+
+<CustomToggle@ToggleButton>:
+    markup: True
+    font_size: 20
+    size_hint: None, None
+    size: 200, 50
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    background_normal: ''
+    background_color: 1, 1, 1, .5
+    canvas.before:
+        Color:
+            rgba: .56, .56, .56, 1
+        Line:
+            width: 1.5
+            rectangle: self.x, self.y, self.width, self.height
+    text: 'ToggleButton'
+    color: 0, 0, 0, 1
+    state: 'normal'
+
+<CustomDropDown>:
+    
+
+<ButtonLayout@BoxLayout>:
+    orientation: 'horizontal'
+    padding: 10
+    spacing: 10
+    size_hint: None, None
+    height: self.minimum_height
+    width: self.minimum_width
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+<DisplayView>:
+    font_size: 20
+    background_normal: ''
+    background_color: 0.5, 0.5, 1, 1
+    text: 'Button'
+    color: 1, 0, 0, 1
+    canvas.after:
+        Color:
+            rgba: .56, .56, .56, 1
+        Line:
+            width: 5
+            rectangle: self.x+5, self.y+5, self.width-5, self.height-5
+    size: 200, 50
+
+# background for all screens
+<Screen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos

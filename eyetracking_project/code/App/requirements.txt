@@ -1,0 +1,11 @@
+tobii-research # used to interact with tobii eyetrackers
+Kivy~=2.3.0 # main application framework
+pymupdf~=1.23.25 # used to display and manipulate pdfs
+screeninfo~=0.8.1 # used to get display info
+pyautogui~=0.9.54 # used for mouse position
+matplotlib~=3.7.1
+opencv-python~=4.8.1.78
+pillow~=10.2.0
+pytesseract~=0.3.10
+pandas~=1.5.3
+numpy~=1.24.4

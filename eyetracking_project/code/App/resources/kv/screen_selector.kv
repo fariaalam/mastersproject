@@ -1,0 +1,32 @@
+#:kivy 2.3.0
+<ScreenSelectorScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'vertical'
+            #AnchorLayout:
+            #    anchor_x: 'center'
+            #    anchor_y: 'top'
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'center'
+                size_hint: 1, 0.1
+                CustomLabel:
+                    id: page_header
+                    text: 'Detected Screens'
+                    size: self.texture_size
+                    font_size: '24sp'
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'center'
+                size_hint: 1, 0.9
+                FloatLayout:
+                    id: displays
+                    pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+        ButtonLayout:
+            CustomButton:
+                text: 'Reset & Reload'
+                id: reset_and_reload_button
+            CustomButton:
+                text: 'Save & Back'
+                on_press: app.root.current = 'main_menu'

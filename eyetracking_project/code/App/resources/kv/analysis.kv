@@ -1,0 +1,174 @@
+#:kivy 2.3.0
+<AnalysisScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        CustomLabel:
+            text: 'Analysis'
+            font_size: 30
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 1
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, 1
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 0.8, 1
+                    CustomLabel:
+                        text: 'Page view'
+                        font_size: 20
+                        size_hint: 1, 0.1
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        size_hint: 1, 0.9
+                        Image:
+                            id: image1
+                            on_touch_down: root.get_pixel(*args)
+                            allow_stretch : True
+                    ButtonLayout:
+                        orientation: 'horizontal'
+                        CustomButton:
+                            text: 'Previous'
+                            on_press: root.show_prev_page()
+                        CustomButton:
+                            text: 'Next'
+                            on_press: root.show_next_page()
+                        CustomButton:
+                            text: 'Refresh'
+                            on_press: root.refresh()
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 0.4, 1
+                    background_color: 1, 1, 1, .5
+                    CustomLabel:
+                        text: 'Analysis Report'
+                        font_size: 18
+                        size_hint: 1, 0.05
+                        
+                    BoxLayout:
+                        orientation: 'vertical'
+                        id: vbox
+                        size_hint: 1, None
+                        height: self.minimum_height
+                            
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 1
+                        background_color: 1, 1, 1, .5
+                        CustomLabel:
+                            text: 'Analysis Report'
+                            font_size: 17
+                            size_hint: 1, 1
+                            id: report
+
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 0.2, 1
+                    background_color: 0, 1, 0, .5
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, .65
+                        background_color: 0, 1, 0, .5
+                        ButtonLayout:
+                            orientation: 'vertical'
+                            CustomLabel:
+                                text: 'Readers'
+                                font_size: 20
+                                
+                            CustomToggle:
+                                text: 'Reader 1'
+                                id : toggle_user_1
+                                font_size: 20
+                                state: 'normal'
+                                on_press: if self.state == 'down': root.change_toggle_user1()
+                                
+                            CustomToggle:
+                                text: 'Reader 2'
+                                id : toggle_user_2
+                                font_size: 20
+                                state: 'normal'
+                                on_press: if self.state == 'down': root.change_toggle_user2()
+                                
+                            CustomToggle:
+                                text: 'Reader 3'
+                                font_size: 20
+                                id : toggle_user_3
+                                state: 'normal'
+                                on_press: if self.state == 'down': root.change_toggle_user3()
+                            
+                            CustomToggle:
+                                text: 'Reader 4'
+                                font_size: 20
+                                id : toggle_user_4
+                                state: 'normal'
+                                on_press: if self.state == 'down': root.change_toggle_user4()
+
+                            CustomToggle:
+                                text: 'Combined'
+                                id : combined
+                                font_size: 20
+                                state: 'normal'
+                                on_press: if self.state == 'down': root.change_toggle_combined()
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        background_color: 0, 1, 0, .5
+                        ButtonLayout:
+                            orientation: 'vertical'
+                            CustomLabel:
+                                text: 'Options'
+                                font_size: 20
+
+                            CustomButton:
+                                text: 'Read Thoroughly'
+                                on_press: root.generate_relevent()
+
+                            CustomButton:
+                                text: 'Skimmed'
+                                on_press: root.generate_skimmed()
+                            
+                            CustomButton:
+                                text: 'Skipped'
+                                on_press: root.generate_skipped()
+
+                            CustomButton:
+                                text: 'Heatmap'
+                                on_press: root.generate_heatmap()
+                                
+                            CustomButton:
+                                text: 'Ocapcity Map'
+                                on_press: root.generate_opacity()
+                                
+                            CustomButton:
+                                text: 'Fixations'
+                                on_press: root.generate_fixation()
+
+                            CustomButton:
+                                text: 'Scanpath'
+                                on_press: root.generate_scanpath()
+                                
+                            CustomButton:
+                                text: 'Saccades'
+                                on_press: root.generate_saccades()
+                            
+                            
+                    ButtonLayout:
+                        orientation: 'vertical'
+                        CustomLabel:
+                            text: 'Menu'
+                            font_size: 20
+                        CustomButton:
+                            text: 'File Browser'
+                            on_press: root.open_filebrowser()
+                        CustomButton:
+                            text: 'Main Menu'
+                            on_press: root.manager.current = 'main_menu'
+                
+                
